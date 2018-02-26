@@ -3,10 +3,18 @@
 
 void drawRows(int rows, int cols, int (*array)[], int size)
 {
+  for(int i = 0; i < size; i++)
+  {
+    (*array)[cols + (size)] = '-';
+  }
 }
 
 void drawCols(int rows, int cols, int (*array)[], int size)
 {
+  for(int i = 0; i < size; i++)
+  {
+    (*array + rows + (size))[cols] = '|';
+  }
 }
 
 void printMatrix(int (*array)[])

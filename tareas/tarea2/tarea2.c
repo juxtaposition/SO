@@ -11,7 +11,7 @@ int main()
 {
 int indice = 0;
 int pivote = 0;
-int size = 2; // Tama
+int size = 2; // Leer del archivo
 int rowMatrix = ((size * 2) + 3);
 int colMatrix = (size + 2);
 
@@ -32,15 +32,15 @@ simple = malloc((10 * 10) * sizeof(int));
 
 int numbers[ROW][COL] = {
   {'-', '|', '|', ' ', '|', '|', '-'},  /* Number zero */
-  {' ', ' ', '|', ' ', ' ', '|', ' '},
-  {'-', ' ', '|', '-', '|', ' ', '-'},
-  {'-', ' ', '|', '-', ' ', '|', '-'},
-  {' ', '|', '|', '-', ' ', '|', ' '},
-  {'-', '|', ' ', '-', ' ', '|', '-'},
-  {'-', '|', ' ', '-', '|', '|', '-'},
-  {'-', ' ', '|', ' ', ' ', '|', ' '},
-  {'-', '|', '|', '-', '|', '|', '-'},
-  {'-', '|', '|', '-', ' ', '|', ' '}
+  {' ', ' ', '|', ' ', ' ', '|', ' '},  /* Number one*/
+  {'-', ' ', '|', '-', '|', ' ', '-'},  /* Number one*/
+  {'-', ' ', '|', '-', ' ', '|', '-'},  /* Number one*/
+  {' ', '|', '|', '-', ' ', '|', ' '},  /* Number one*/
+  {'-', '|', ' ', '-', ' ', '|', '-'},  /* Number one*/
+  {'-', '|', ' ', '-', '|', '|', '-'},  /* Number one*/
+  {'-', ' ', '|', ' ', ' ', '|', ' '},  /* Number one*/
+  {'-', '|', '|', '-', '|', '|', '-'},  /* Number one*/
+  {'-', '|', '|', '-', ' ', '|', ' '}  /* Number one*/
 };
 
 
@@ -53,6 +53,7 @@ for(int row = 0; row < rowMatrix; row++)
     *(*(matrix + row) + col) = ' ';
   }
 }
+
 
 for(int i = 0; i < cantidad; i++)
 {
@@ -93,8 +94,6 @@ for(int i = 0; i < cantidad; i++)
         *(*(matrix + indice + 1) + (colMatrix-1) + (i * colMatrix)) = '|';
        }
        break;
-    //default :
-     // *(*(matrix + i)) = '0';
     }
   }
 }
@@ -114,8 +113,8 @@ for(int row = 0; row < rowMatrix; row++)
   Ejemplo sencillo para pasar un apuntador a un arreglo
   bidemencional
 */
-sizeMatrix(simple);
-printMatrix(simple);
+//sizeMatrix(simple);
+//printMatrix(simple);
 
 return 0;
 }
