@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "helpers.h"
 #define COL 7
 #define ROW 10
+
+
 
 int main()
 {
 int indice = 0;
 int pivote = 0;
-int size = 2;
+int size = 2; // Tama
 int rowMatrix = ((size * 2) + 3);
 int colMatrix = (size + 2);
 
@@ -16,6 +19,16 @@ int cantidad = 10;
 
 typedef int arrelo_matrix[cantidad * colMatrix];
 arrelo_matrix *matrix;
+
+/*
+  Ejemplo para pasar como argumento un arreglo bidemencional 
+*/
+typedef int simpleMatrix[10];
+simpleMatrix *simple;
+simple = malloc((10 * 10) * sizeof(int));
+/*
+  Ejemplo para pasar como argumento un arreglo bidemencional 
+*/
 
 int numbers[ROW][COL] = {
   {'-', '|', '|', ' ', '|', '|', '-'},  /* Number zero */
@@ -95,8 +108,14 @@ for(int row = 0; row < rowMatrix; row++)
     printf("%c", *(*(matrix + row) + col));
   }
   printf("\n");
-} 
+}
 
+/* 
+  Ejemplo sencillo para pasar un apuntador a un arreglo
+  bidemencional
+*/
+sizeMatrix(simple);
+printMatrix(simple);
 
 return 0;
 }
