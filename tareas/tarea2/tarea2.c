@@ -64,16 +64,19 @@ for(int i = 0; i < cantidad; i++)
     {
      case '-':
        if(j == 0) {
-       *(*(matrix ) + 1 + (i * colMatrix)) = '-';
-       *(*(matrix ) + 2 + (i * colMatrix)) = '-';
+       //*(*(matrix ) + 1 + (i * colMatrix)) = '-';
+       //*(*(matrix ) + 2 + (i * colMatrix)) = '-';
+       drawRows(0, (i * colMatrix), matrix, size);
        } else if(j == 3) {
        pivote = 3;
        *(*(matrix + pivote) + 1 + (i * colMatrix)) = '-';
        *(*(matrix + pivote) + 2 + (i * colMatrix)) = '-';
+       //drawRows(3, (i * colMatrix), matrix, size);
        } else if(j == 6) {
        pivote = 6;
        *(*(matrix + pivote) + 1 + (i * colMatrix)) = '-';
        *(*(matrix + pivote) + 2 + (i * colMatrix)) = '-';
+       //drawRows(6, (i * colMatrix), matrix, size);
        }
        break;
      case '|':

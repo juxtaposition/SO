@@ -1,11 +1,12 @@
 #include "helpers.h"
 #include <stdio.h>
 
-void drawRows(int rows, int cols, int (*array)[], int size)
+void drawRows(int OffsetRows, int OffsetCols, int (*array)[], int size)
 {
-  for(int i = 0; i < size; i++)
+  for(int i = 1; i <= size; i++)
   {
-    (*array)[cols + (size)] = '-';
+    (*array + OffsetRows)[OffsetCols + i] = '-';
+    //*(*(matrix + offsetRows) + i + (offSetCols)) = '-';
   }
 }
 
