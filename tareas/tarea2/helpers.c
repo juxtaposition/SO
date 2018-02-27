@@ -6,15 +6,14 @@ void drawRows(int m, int n, int OffsetRows, int OffsetCols, int array[m][n], int
   for(int i = 1; i <= size; i++)
   {
      array[OffsetRows][OffsetCols + i] = '-';
-    //*(*(matrix + offsetRows) + i + (offSetCols)) = '-';
   }
 }
 
-void drawCols(int rows, int cols, int (*array)[], int size)
+void drawCols(int m, int n, int OffsetRows, int OffsetCols, int array[m][n], int size)
 {
-  for(int i = 0; i < size; i++)
+  for(int i = 1; i <= size; i++)
   {
-    (*array + rows + (size))[cols] = '|';
+    array[OffsetRows + i][OffsetCols] = '|';
   }
 }
 
