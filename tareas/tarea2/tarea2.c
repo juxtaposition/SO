@@ -9,31 +9,35 @@
 
 int main()
 {
-int size = 4; // Leer del archivo
-int rowMatrix = ((size * 2) + 3);
-int colMatrix = (size + 2);
-
-
-int cantidad = 10;
-
-
-typedef int arrelo_matrix[cantidad * colMatrix];
-arrelo_matrix *matrix;
+int size; // Leer del archivo
+char segundo[78];
+int cantidad;
 
 int numbers[ROW][COL] = {
   {'-', '|', '|', ' ', '|', '|', '-'},  /* Number zero */
-  {' ', ' ', '|', ' ', ' ', '|', ' '},  /* Number one*/
-  {'-', ' ', '|', '-', '|', ' ', '-'},  /* Number one*/
-  {'-', ' ', '|', '-', ' ', '|', '-'},  /* Number one*/
-  {' ', '|', '|', '-', ' ', '|', ' '},  /* Number one*/
-  {'-', '|', ' ', '-', ' ', '|', '-'},  /* Number one*/
-  {'-', '|', ' ', '-', '|', '|', '-'},  /* Number one*/
-  {'-', ' ', '|', ' ', ' ', '|', ' '},  /* Number one*/
-  {'-', '|', '|', '-', '|', '|', '-'},  /* Number one*/
-  {'-', '|', '|', '-', ' ', '|', ' '}  /* Number one*/
+  {' ', ' ', '|', ' ', ' ', '|', ' '},  /* Number one */
+  {'-', ' ', '|', '-', '|', ' ', '-'},  /* Number two */
+  {'-', ' ', '|', '-', ' ', '|', '-'},  /* Number three */
+  {' ', '|', '|', '-', ' ', '|', ' '},  /* Number four */
+  {'-', '|', ' ', '-', ' ', '|', '-'},  /* Number five */
+  {'-', '|', ' ', '-', '|', '|', '-'},  /* Number six */
+  {'-', ' ', '|', ' ', ' ', '|', ' '},  /* Number seven */
+  {'-', '|', '|', '-', '|', '|', '-'},  /* Number eight */
+  {'-', '|', '|', '-', ' ', '|', ' '}  /* Number nine */
 };
 
 
+
+
+while (scanf("%d %s", &size, &segundo[0]) == 2)
+{
+
+int rowMatrix = ((size * 2) + 3);
+int colMatrix = (size + 2);
+cantidad = strlen(segundo);
+
+typedef int arreglo_matrix[cantidad * colMatrix];
+arreglo_matrix *matrix;
 matrix = malloc((rowMatrix * (cantidad * colMatrix)) * sizeof(int));
 
 // Llenamos de ceros la matriz
@@ -45,12 +49,15 @@ for(int row = 0; row < rowMatrix; row++)
   }
 }
 
+
+//printf("%d %d", cantidad, size);
 // Pintamos los numeros dependiendo de la cantidad indicada
+if(size) {
 for(int i = 0; i < cantidad; i++)
 {
   for(int j = 0; j < rowMatrix; j++)
   {
-    switch(numbers[i][j])
+    switch(numbers[segundo[i] - '0'][j])
     {
      case '-':
        if(j == 0) {
@@ -83,8 +90,6 @@ for(int i = 0; i < cantidad; i++)
   }
 }
 
-
-
 for(int row = 0; row < rowMatrix; row++)
 {
   for(int col = 0; col < (colMatrix * cantidad); col++)
@@ -93,6 +98,14 @@ for(int row = 0; row < rowMatrix; row++)
   }
   printf("\n");
 }
+}
+
+
+
+
+}
+
+
 
 return 0;
 }
