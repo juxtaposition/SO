@@ -27,8 +27,6 @@ int numbers[ROW][COL] = {
 };
 
 
-
-
 while (scanf("%d %s", &size, &segundo[0]) == 2)
 {
 
@@ -53,59 +51,56 @@ for(int row = 0; row < rowMatrix; row++)
 //printf("%d %d", cantidad, size);
 // Pintamos los numeros dependiendo de la cantidad indicada
 if(size) {
-for(int i = 0; i < cantidad; i++)
-{
-  for(int j = 0; j < rowMatrix; j++)
+  for(int i = 0; i < cantidad; i++)
   {
-    switch(numbers[segundo[i] - '0'][j])
+    for(int j = 0; j < rowMatrix; j++)
     {
-     case '-':
-       if(j == 0) {
-       drawRows(rowMatrix, cantidad * colMatrix, 0,
-               (i * colMatrix), matrix, size);
-       } else if(j == 3) {
-       drawRows(rowMatrix, cantidad * colMatrix, size + 1,
-               (i * colMatrix), matrix, size);
-       } else if(j == 6) {
-       drawRows(rowMatrix, cantidad * colMatrix, (size*2) + 2,
-               (i * colMatrix), matrix, size);
-       }
-       break;
-     case '|':
-       if(j == 1) {
-       drawCols(rowMatrix, cantidad * colMatrix, 0,
-               (i * colMatrix), matrix, size);
-       } else if(j == 2) {
-       drawCols(rowMatrix, cantidad * colMatrix, 0,
-               (colMatrix-1) + (i * colMatrix), matrix, size);
-       } else if(j == 4) {
-       drawCols(rowMatrix, cantidad * colMatrix, size + 1,
-               (i * colMatrix), matrix, size);
-       } else if(j == 5) {
-       drawCols(rowMatrix, cantidad * colMatrix, size + 1,
-               (colMatrix-1) + (i * colMatrix), matrix, size);
-       }
-       break;
+      switch(numbers[segundo[i] - '0'][j])
+      {
+       case '-':
+         if(j == 0) {
+         drawRows(rowMatrix, cantidad * colMatrix, 0,
+                 (i * colMatrix), matrix, size);
+         } else if(j == 3) {
+         drawRows(rowMatrix, cantidad * colMatrix, size + 1,
+                 (i * colMatrix), matrix, size);
+         } else if(j == 6) {
+         drawRows(rowMatrix, cantidad * colMatrix, (size*2) + 2,
+                 (i * colMatrix), matrix, size);
+         }
+         break;
+       case '|':
+         if(j == 1) {
+         drawCols(rowMatrix, cantidad * colMatrix, 0,
+                 (i * colMatrix), matrix, size);
+         } else if(j == 2) {
+         drawCols(rowMatrix, cantidad * colMatrix, 0,
+                 (colMatrix-1) + (i * colMatrix), matrix, size);
+         } else if(j == 4) {
+         drawCols(rowMatrix, cantidad * colMatrix, size + 1,
+                 (i * colMatrix), matrix, size);
+         } else if(j == 5) {
+         drawCols(rowMatrix, cantidad * colMatrix, size + 1,
+                 (colMatrix-1) + (i * colMatrix), matrix, size);
+         }
+         break;
+      }
     }
   }
-}
 
-for(int row = 0; row < rowMatrix; row++)
-{
-  for(int col = 0; col < (colMatrix * cantidad); col++)
+  // Print the current matrix of numbers
+  for(int row = 0; row < rowMatrix; row++)
   {
-    printf("%c", *(*(matrix + row) + col));
+    for(int col = 0; col < (colMatrix * cantidad); col++)
+    {
+      printf("%c", *(*(matrix + row) + col));
+    }
+    printf("\n");
   }
-  printf("\n");
-}
-}
 
+} // End of IF(size)
 
-
-
-}
-
-
+} // End while
 
 return 0;
 }
