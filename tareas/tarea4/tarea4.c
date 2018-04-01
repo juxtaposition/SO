@@ -1,17 +1,30 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define PLAT "Platon"
+#define NIET "Nietzsche"
+#define DESC "Descartes"
+#define HEGE "Hegel"
+#define ARIS "Aristoteles"
 
 int comida = 6;
 
+
 struct cutlery{
-	int state; // A boolean state, bus or free
+  int state; // A boolean state, bus or free
 };
 
+// Function shared for the adjunt
+void goto_xy(int x, int y){
+	printf("\033[%d;%df", y, x);
+}
+
+// Print with format two strings
 void printInfo(char* str1, char* str2) {
 	printf("%s %s \n", str1, str2);
 }
 
+// Struct for philosophers
 struct philosopher {
 	struct cutlery* ten1;
 	struct cutlery* ten2;
@@ -22,23 +35,30 @@ struct philosopher {
 void *eat(void *h1) {
 	struct philosopher *f1;
 	f1 = (struct philosopher*) h1;
-	printInfo(f1->name, "is thinking");
+	char *cName = f1->name;
+	if(cName == PLAT) 
+		goto_xy(1,1);
+
+	printInfo(cName, "is thinking\n");
 
 	while(f1->cantEat > 0) {
 	  if(f1->ten1->state == 0 && f1->ten2->state == 0) {
-		printInfo(f1->name, "has hungry");
+		goto_xy(1,2);
+		printInfo(cName, "has hungry\n");
 		f1->ten1->state = f1->ten2->state = 1;
-		printInfo(f1->name, "take the cutlery");
+		goto_xy(1,3);
+		printInfo(cName, "take the cutlery\n");
 		while(f1->cantEat > 0) {
 		  f1->cantEat--;
-		  printInfo(f1->name, "is eating");
+		  goto_xy(1,4);
+		  printInfo(cName, "is eating\n");
 		}
 	  } else {
- 		printInfo(f1->name, "can't eat");
+ 		printInfo(cName, "can't eat\n");
       }
 	}
 	f1->ten1->state = f1->ten2->state = 0;
-	printInfo(f1->name, "has finised to eat \n");
+	printInfo(cName, "has finised to eat \n");
 	pthread_exit("Thread finished");
 }
 
@@ -61,27 +81,27 @@ int main() {
 	struct philosopher* fil4 = (struct philosopher*) malloc(sizeof(struct philosopher));
 	struct philosopher* fil5 = (struct philosopher*) malloc(sizeof(struct philosopher));
 
-	fil1->name = "Platon";
+	fil1->name = PLAT;
 	fil1->cantEat = comida;
 	fil1->ten1 = ten1;
 	fil1->ten2 = ten2;
 
-	fil2->name = "Descartes";
+	fil2->name = DESC;
 	fil2->cantEat = comida;
 	fil2->ten1 = ten2;
 	fil2->ten2 = ten3;
 
-	fil3->name = "Nietsche";
+	fil3->name = NIET;
 	fil3->cantEat = comida;
 	fil3->ten1 = ten3;
 	fil3->ten2 = ten4;
 
-	fil4->name = "Hegel";
+	fil4->name = HEGE;
 	fil4->cantEat = comida;
 	fil4->ten1 = ten4;
 	fil4->ten2 = ten5;
 
-	fil5->name = "Aristoteles";
+	fil5->name = ARIS;
 	fil5->cantEat = comida;
 	fil5->ten1 = ten5;
 	fil5->ten2 = ten1;
