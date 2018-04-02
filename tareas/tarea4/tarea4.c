@@ -1,14 +1,17 @@
-#include <pthread.h>
+#include <pthread.h> // Lib for threads
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h> // Lib for system calls
+#include <time.h>
+
 #define PLAT "Platon"
 #define NIET "Nietzsche"
 #define DESC "Descartes"
 #define HEGE "Hegel"
 #define ARIS "Aristoteles"
 
-int comida = 6;
-
+int comida = 6; // Amount of eat
+int eat_time, think_time; // Time for thing and eat
 
 struct cutlery{
   int state; // A boolean state, bus or free
@@ -36,9 +39,9 @@ void *eat(void *h1) {
 	struct philosopher *f1;
 	f1 = (struct philosopher*) h1;
 	char *cName = f1->name;
-	if(cName == PLAT) 
-		goto_xy(1,1);
-
+	eat_time = rand() % 11;
+	think_time = rand() % 8;
+	printf("%d %d \n", eat_time, think_time);
 	printInfo(cName, "is thinking\n");
 
 	while(f1->cantEat > 0) {
